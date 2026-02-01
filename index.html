@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Akansha</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6; /* Soft pink background */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow: hidden; /* Prevents scrollbars when button moves */
+        }
+
+        h1 {
+            color: #d32f2f;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .gif-container {
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            position: relative;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background-color: #45a049;
+        }
+
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative; /* Starts relative, becomes absolute on hover */
+        }
+        
+        /* Hidden message that appears after clicking Yes */
+        #success-message {
+            display: none;
+            color: #d32f2f;
+        }
+        
+        #main-content {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2Q1Ymw1ODk2d2J2eW92aGx4bG54eWY1Ymw1ODk2d2J2eW92aGx4bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Heart" width="150">
+        </div>
+
+        <h1>Akansha, will you be my Valentine?</h1>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="acceptProposal()">Yes, absolutely!</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <div id="success-message">
+        <img src="https://media.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Celebration" width="200">
+        <h1>Yay! ❤️ See you on the 14th!</h1>
+    </div>
+
+    <script>
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        function acceptProposal() {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('success-message').style.display = 'flex';
+            document.getElementById('success-message').style.flexDirection = 'column';
+            document.getElementById('success-message').style.alignItems = 'center';
+            
+            // Optional: Launch confetti if you wanted to add a library, 
+            // but this keeps it simple with just one file.
+        }
+    </script>
+</body>
+</html>
